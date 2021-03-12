@@ -1,0 +1,483 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jan 18, 2021 at 12:35 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `tecshop`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carts`
+--
+
+CREATE TABLE `carts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` double NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data`
+--
+
+CREATE TABLE `data` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `data`
+--
+
+INSERT INTO `data` (`id`, `product`, `price`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Earphones', 200, '/images/c.jpg', '2021-01-11 04:13:29', '2021-01-11 04:13:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `items`
+--
+
+CREATE TABLE `items` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` double NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(4, '2014_10_12_000000_create_users_table', 1),
+(5, '2014_10_12_100000_create_password_resets_table', 1),
+(6, '2020_10_29_124100_create_products_table', 1),
+(7, '2020_12_18_075127_create_items_table', 2),
+(8, '2020_12_21_091808_create_shops_table', 2),
+(9, '2020_12_21_150905_create_carts_table', 2),
+(10, '2021_01_06_062631_create_data_table', 3),
+(11, '2021_01_09_084320_create_tecshop_users_table', 3),
+(12, '2021_01_10_172950_create_tecshop_products_table', 4),
+(13, '2021_01_10_180520_create_tecshop_carts_table', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('benjaminochieng99@gmail.com', '$2y$10$jtmPOtDvi9pQjX9t7wGHOu2gzK.ESTTd090vZ5AwXjIqPW/RGS66S', '2020-11-17 10:45:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `description3` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `title`, `description`, `description2`, `created_at`, `updated_at`, `description3`) VALUES
+(1, '<h2 style=\"text-align: left; line-height: 1;\"><span style=\"font-size: 50px;\">Internet Access</span></h2>\r\n<h2 style=\"text-align: left; line-height: 1;\"><span style=\"font-size: 50px;\">for Home</span></h2>', NULL, NULL, '2020-11-02 04:36:47', '2020-11-26 03:52:14', NULL),
+(2, '<h2 style=\"line-height: 1; text-align: left;\"><span style=\"font-size: 50px;\">Internet Access</span><br /><span style=\"font-size: 50px;\">for BUSINESS</span></h2>', NULL, NULL, '2020-11-02 04:38:55', '2020-11-26 03:50:37', NULL),
+(3, '<h2><span style=\"font-size: 50px;\">Nexcom WiFi</span></h2>\r\n<h2>&nbsp;</h2>', NULL, NULL, '2020-11-02 04:39:23', '2020-11-18 03:23:54', NULL),
+(4, '<p><span style=\"font-size: 22px;\"><strong>Internet access</strong></span></p>\r\n<p><span style=\"font-size: 22px;\"><strong>for Home</strong></span></p>', '<p style=\"line-height: 2.2;\"><span style=\"font-size: 18px;\">Get Connected</span></p>', NULL, '2020-11-02 04:39:54', '2020-11-16 08:38:51', NULL),
+(5, '<p><strong><span style=\"font-size: 22px;\">Internet access</span></strong></p>\r\n<p><strong><span style=\"font-size: 22px;\">for SME Business</span></strong></p>', '<p style=\"line-height: 2.2;\"><span style=\"font-size: 18px;\">Get Connected</span></p>', NULL, '2020-11-02 04:40:02', '2020-11-10 04:38:18', NULL),
+(6, '<p><span style=\"font-size: 21px;\"><strong>Internet on demand</strong></span></p>\r\n<p><span style=\"font-size: 12pt;\"><strong>NEXCOM &nbsp;</strong><img src=\"../images/wifi.png\" alt=\"\" width=\"42\" height=\"15\" /></span></p>', '<p style=\"line-height: 2.2;\"><span style=\"font-size: 18px; text-align: center;\">Get Connected</span></p>', NULL, '2020-11-02 04:40:23', '2020-11-18 05:42:07', NULL),
+(7, '<h2 id=\"q\">Questions?</h2>', '<p style=\"line-height: 27px;\"><span style=\"font-size: 15px;\">Give us a shout out</span><br /><span style=\"font-size: 15px;\">&nbsp;<span class=\"fa fa-phone\" style=\"color: #f7a220;\">&nbsp;</span>0111636443</span><br /><span style=\"font-size: 15px;\">sales@directcore.com&nbsp;</span><br /><br /></p>', '<ul style=\"list-style-type: none;\">\r\n<li>&nbsp;</li>\r\n</ul>', '2020-11-02 04:41:13', '2020-11-18 08:56:07', NULL),
+(8, '<h3 id=\"q\">Request a call back</h3>', '<p>Interested in Internet Access</p>', NULL, '2020-11-02 04:41:32', '2020-11-13 05:49:15', NULL),
+(9, '<h2 style=\"text-align: left; line-height: 18px;\"><br /><span style=\"font-size: 15px;\">&nbsp;Get Internet</span></h2>', NULL, NULL, '2020-11-03 03:56:55', '2020-11-20 06:40:14', NULL),
+(10, '<h2 style=\"text-align: left; line-height: 18px;\"><br /><span style=\"font-size: 15px;\">Services</span></h2>', NULL, NULL, '2020-11-03 03:57:02', '2020-11-16 09:01:46', NULL),
+(11, '<h2 style=\"text-align: left; line-height: 18px;\"><br /><span style=\"font-size: 15px;\">Contact Us</span></h2>', NULL, NULL, '2020-11-03 03:57:12', '2020-11-16 09:01:22', NULL),
+(12, '<h2 style=\"text-align: left; line-height: 18px;\"><br /><span style=\"font-size: 15px;\">My Account</span></h2>', NULL, NULL, '2020-11-03 03:57:25', '2020-11-20 07:11:25', NULL),
+(13, '<h2 style=\"text-align: left; line-height: 1;\">Internet Access<br />for HOME</h2>', NULL, NULL, '2020-11-03 10:30:40', '2020-11-10 03:46:24', NULL),
+(14, '<h2>Internet Access<br />\r\nfor HOME</h2>', '', '', '2020-11-04 04:51:15', '2020-11-04 04:51:15', NULL),
+(15, '<p style=\"line-height: 15px;\"><span style=\"font-size: 40px;\">Internet Access&nbsp;</span></p>\r\n<p style=\"line-height: 15px;\"><span style=\"font-size: 40px;\">for Home</span></p>', NULL, NULL, '2020-11-04 06:05:18', '2020-11-18 05:36:33', NULL),
+(16, '<p>6 <span style=\"font-size: 18px;\">MBPS</span></p>', '<p><sup>Ksh</sup>&nbsp;2,900</p>', '<ul style=\"list-style-type: none;\">\r\n<li><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Data Volume - Unlimited</li>\r\n<li><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Data Speed - upto 6 Mbps</li>\r\n<li><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Validity - Monthly</li>\r\n</ul>', '2020-11-04 06:55:15', '2020-11-12 06:03:14', NULL),
+(17, '<p>12 <span style=\"font-size: 18px;\">MBPS</span></p>', '<p><sup>Ksh</sup>&nbsp;4,000</p>', '<ul style=\"list-style-type: none;\">\r\n<li><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Data Volume - Unlimited</li>\r\n<li><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Data Speed - upto 12 Mbps</li>\r\n<li><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Validity - Monthly</li>\r\n</ul>', '2020-11-04 07:01:17', '2020-11-12 06:10:38', NULL),
+(18, '<p>25 <span style=\"font-size: 18px;\">MBPS</span></p>', '<p><sup>Ksh</sup>&nbsp;6,500</p>', '<ul style=\"list-style-type: none;\">\r\n<li><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Data Volume - Unlimited</li>\r\n<li><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Data Speed - upto 25 Mbps</li>\r\n<li><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Validity - Monthly</li>\r\n</ul>', '2020-11-04 09:07:30', '2020-11-12 06:15:15', NULL),
+(19, '<p>3 <span style=\"font-size: 18px;\">MBPS</span></p>', '<p><sup id=\"the_up\">KES</sup>&nbsp;3,600</p>', '<ul style=\"list-style-type: none;\">\r\n<li><em class=\"fa fa-check\" style=\"color: #074578;\">&nbsp;</em>Data Volume - Unlimited</li>\r\n<li><em class=\"fa fa-check\" style=\"color: #074578;\">&nbsp;</em>Data Speed - upto 3 Mbps</li>\r\n<li><em class=\"fa fa-check\" style=\"color: #074578;\">&nbsp;</em>Validity - Monthly</li>\r\n</ul>', '2020-11-04 09:44:59', '2020-11-19 03:02:47', NULL),
+(20, '<p>6 <span style=\"font-size: 18px;\">MBPS</span></p>', '<p><sup id=\"the_up\">KES</sup>&nbsp;6,000</p>', '<ul style=\"list-style-type: none;\">\r\n<li><em class=\"fa fa-check\" style=\"color: #074578;\">&nbsp;</em>Data Volume - Unlimited</li>\r\n<li><em class=\"fa fa-check\" style=\"color: #074578;\">&nbsp;</em>Data Speed - upto 6 Mbps</li>\r\n<li><em class=\"fa fa-check\" style=\"color: #074578;\">&nbsp;</em>Validity - Monthly</li>\r\n</ul>', '2020-11-04 09:49:35', '2020-11-12 07:02:46', NULL),
+(21, '<p>12 <span style=\"font-size: 18px;\">MBPS</span></p>', '<p><sup id=\"the_up\">KES</sup>&nbsp;14,500</p>', '<ul style=\"list-style-type: none;\">\r\n<li><em class=\"fa fa-check\" style=\"color: #074578;\">&nbsp;</em>Data Volume - Unlimited</li>\r\n<li><em class=\"fa fa-check\" style=\"color: #074578;\">&nbsp;</em>Data Speed - upto 12 Mbps</li>\r\n<li><em class=\"fa fa-check\" style=\"color: #074578;\">&nbsp;</em>Validity - Monthly</li>\r\n</ul>', '2020-11-04 09:52:01', '2020-11-12 07:05:04', NULL),
+(22, '<p>20 <span style=\"font-size: 18px;\">MBPS</span></p>', '<p><sup id=\"the_up\">KES</sup>&nbsp;19,000</p>', '<ul style=\"list-style-type: none;\">\r\n<li><em class=\"fa fa-check\" style=\"color: #074578;\">&nbsp;</em>Data Volume - Unlimited</li>\r\n<li><em class=\"fa fa-check\" style=\"color: #074578;\">&nbsp;</em>Data Speed - upto 20 Mbps</li>\r\n<li><em class=\"fa fa-check\" style=\"color: #074578;\">&nbsp;</em>Validity - Monthly</li>\r\n</ul>', '2020-11-04 09:52:48', '2020-11-12 07:07:10', NULL),
+(23, 'Enterprise Solutions', NULL, NULL, '2020-11-04 09:54:47', '2020-11-04 10:14:43', NULL),
+(24, '<p style=\"font-size: 20px;\">Dedicated Internet</p>', '<p>With Dedicated Internet Access, your company is guaranteed to receive the bandwidth you purchased, 100% of the time.</p>', '<p style=\"line-height: 52px;\">Read More</p>', '2020-11-04 09:55:50', '2020-11-23 08:58:24', NULL),
+(25, '<p style=\"font-size: 20px;\">Smart Solutions</p>', '<p>Smart solutions is a general term for systems combining innovative technologies, both in terms of hardware (Internet of Things) and software.</p>', '<p style=\"line-height: 52px;\">Read More</p>', '2020-11-04 10:16:58', '2020-11-12 08:43:15', NULL),
+(26, '<p style=\"font-size: 20px;\">Hosting</p>', '<p>Web hosting is a service that allows organizations and individuals to post a website or web page onto the Internet.</p>', '<p style=\"line-height: 52px;\">Read More</p>', '2020-11-04 10:18:52', '2020-11-12 08:44:41', NULL),
+(27, '<p style=\"font-size: 40px;\">Nexcom <img src=\"../../images/wifi.png\" alt=\"\" width=\"72\" height=\"50\" /></p>', NULL, NULL, '2020-11-04 10:19:34', '2020-11-12 08:56:21', NULL),
+(28, '<p style=\"font-size: 18px;\">Hourly</p>', '<p><sup>Ksh</sup>&nbsp;20</p>', '<ul style=\"list-style-type: none;\">\r\n<li><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Validity - Per Hour</li>\r\n</ul>', '2020-11-04 10:20:35', '2020-11-12 09:07:19', NULL),
+(29, '<p style=\"font-size: 18px;\">Daily</p>', '<p><sup>Ksh</sup>&nbsp;70</p>', '<ul style=\"list-style-type: none;\">\r\n<li><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Validity - Per Day</li>\r\n</ul>', '2020-11-04 10:21:20', '2020-11-12 09:09:38', NULL),
+(30, '<p style=\"font-size: 18px;\">Weekly</p>', '<p><sup>Ksh</sup>&nbsp;500</p>', '<ul style=\"list-style-type: none;\">\r\n<li><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Validity - Per Week</li>\r\n</ul>', '2020-11-04 10:22:15', '2020-11-12 09:11:11', NULL),
+(31, '<p style=\"font-size: 18px;\">Monthly</p>', '<p><sup>Ksh</sup>&nbsp;1500</p>', '<ul style=\"list-style-type: none;\">\r\n<li><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Validity - Per Month</li>\r\n</ul>', '2020-11-04 10:23:57', '2020-11-12 09:13:16', NULL),
+(32, '<h2 class=\"title__line\"><span style=\"font-size: 25px;\">Wifi</span></h2>', '<p style=\"line-height: 30px;\">High Speed Broadband Internet is brought to your home through wireless access radio technology, commonly known as Wireless to the Home(WTTH).<br />Fiber On Air deploys state of art access features such as beamforming, MIMO, adaptive modulation, and interference mitigation techniques to deliver high speed internet connectivity to your home.</p>\r\n<ul style=\"margin-top: -22px;\">\r\n<li>No data capping</li>\r\n<li>No speed throttling</li>\r\n<li>Express installation</li>\r\n</ul>', NULL, '2020-11-04 10:24:41', '2020-11-13 05:44:09', NULL),
+(33, '<h2 style=\"line-height: 40px;\"><span style=\"font-size: 25px;\">How it works</span></h2>', '<p style=\"line-height: 27px;\">It uses radio waves/frequency from any of our pop as a mode of transmission with an extensive coverage network</p>', NULL, '2020-11-04 10:25:08', '2020-11-12 10:00:30', NULL),
+(34, '<p><span style=\"font-size: 40px;\">Contact Us</span></p>', NULL, NULL, '2020-11-04 10:28:17', '2020-11-12 10:07:54', NULL),
+(35, '<p><span style=\"font-size: 24px; color: #0f3d56;\"><em class=\"fa fa-map-marker\" style=\"color: #0f3d56;\">&nbsp;&nbsp;</em>ADDRESS</span></p>', '<p>No. 3 Sri Aurobindo Avenue,<br />Off Mzima Springs; Lavington.<br />P.O. Box 26766 - 00100, Nairobi.</p>', NULL, '2020-11-04 10:33:02', '2020-11-23 09:10:49', NULL),
+(36, '<p><span style=\"font-size: 24px; color: #0f3d56;\"><em class=\"fa fa-phone\" style=\"color: #0f3d56;\">&nbsp;&nbsp;</em>PHONE NUMBER</span></p>', '<p>+254 20 232 55 99</p>\r\n<p>&nbsp;0750499916</p>', NULL, '2020-11-04 10:33:27', '2020-11-16 11:13:21', NULL),
+(37, '<p><span style=\"font-size: 24px; color: #0f3d56;\"><em class=\"fa fa-envelope\" style=\"color: #0f3d56;\">&nbsp;&nbsp;</em>EMAIL</span></p>', '<p>sales@directcore.com</p>', NULL, '2020-11-04 10:33:58', '2020-11-12 10:34:55', NULL),
+(38, '<p style=\"line-height: 15px;\"><span style=\"font-size: 40px;\">Internet Access&nbsp;</span></p>\r\n<p style=\"line-height: 15px;\"><span style=\"font-size: 40px;\">for Business</span></p>', NULL, NULL, '2020-11-04 11:02:34', '2020-11-12 06:51:38', NULL),
+(40, '<div class=\"single__wedget\">\r\n<h2 class=\"ft__title\">Contact Us</h2>\r\n</div>', '<p><em class=\"fa fa-envelope\">&nbsp;</em> sales@directcore.com</p>\r\n<p><em class=\"fa fa-phone\">&nbsp;</em> +254 20 232 55 99</p>\r\n<p><em class=\"fa fa-map-marker\">&nbsp;</em> No. 3 Sri Aurobindo Avenue, Off Mzima Springs; Lavington.</p>', NULL, '2020-11-05 10:58:22', '2020-11-23 08:58:45', NULL),
+(41, '<h2 class=\"ft__title\">Social</h2>', '<ul class=\"ft__contact__link\">\r\n<li><a href=\"https://web.facebook.com/DirectcoreTech/\"> <em class=\"fa fa-facebook\">&nbsp;</em>&nbsp;&nbsp; Facebook</a></li>\r\n<li><a href=\"https://www.instagram.com/directcoretechnologies/\"> <em class=\"fa fa-instagram\">&nbsp;</em>&nbsp;&nbsp; Instagram</a></li>\r\n<li><a href=\"https://www.linkedin.com/company/18811754/admin/\" aria-invalid=\"true\"> <em class=\"fa fa-linkedin\">&nbsp;</em>&nbsp;&nbsp; Linked In</a></li>\r\n<li><a href=\"https://twitter.com/DirectcoreTech\"> <em class=\"fa fa-twitter\">&nbsp;</em>&nbsp;&nbsp; Twitter</a></li>\r\n</ul>', NULL, '2020-11-05 11:19:20', '2020-11-13 05:21:37', NULL),
+(42, '<h2 class=\"ft__title\">Links</h2>', '<ul class=\"ft__contact__link\">\r\n<li><a href=\"{{ url(\'/about\') }}\" aria-invalid=\"true\">About Us</a></li>\r\n<li><a href=\"{{ url(\'/FAQs\') }}\" aria-invalid=\"true\">FAQs</a></li>\r\n<li><a class=\"\" href=\"{{ url(\'/solutions\') }}\" aria-invalid=\"true\">Support Services</a></li>\r\n<li><!-- <a href=\"{{ url(\'privacy-policy\') }}\">Privacy Policy</a> --> <a href=\"#\">Privacy Policy</a></li>\r\n<li><a href=\"{{ url(\'terms-and-conditions\') }}\" aria-invalid=\"true\">Terms And Conditions</a></li>\r\n</ul>', NULL, '2020-11-05 11:25:18', '2020-11-13 05:24:36', NULL),
+(43, '<p><span style=\"font-size: 40px;\">About Us</span></p>', NULL, NULL, '2020-11-05 11:25:44', '2020-11-18 05:39:48', NULL),
+(44, '<h2>Nexcom Internet</h2>', '<p>We provide Internet services for commercial and residential communities alike. We&rsquo;re locally owned and operated, and we&rsquo;re committed to redefining Internet services with faster and more reliable connectivity, affordable pricing, and exceptional customer service.</p>', NULL, '2020-11-05 12:01:45', '2020-11-14 08:33:19', NULL),
+(45, '<p><img src=\"../images/logo/nexcom.png\" alt=\"\" width=\"188\" height=\"55\" /></p>', '<p>We provide Internet services for commercial and residential communities alike. We&rsquo;re locally owned and operated, and we&rsquo;re committed to redefining Internet services with faster and more reliable connectivity, affordable pricing, and exceptional customer service</p>', NULL, '2020-11-06 04:04:58', '2020-11-23 06:22:08', NULL),
+(46, '<h2>Nexcom WiFi</h2>', '<div>\r\n<p>High Speed Broadband Internet is brought to your home through wireless access radio technology, commonly known as Wireless to the Home(WTTH).</p>\r\n</div>', NULL, '2020-11-14 08:29:24', '2020-11-16 09:45:24', NULL),
+(47, '<h2>Internet access for Home</h2>', '<p>Our fiber optic enabled service to enjoy the kind of internet your family deserves. Connect multiple devices in your home at the same time, any time of the day or night.</p>', NULL, '2020-11-14 08:35:03', '2020-11-18 05:41:11', NULL),
+(48, '<h2>Internet access for Business</h2>', '<p>Keeps your business connected at the speed of light, ensuring your business is always on, responsive and ready to make the most of emerging opportunities.</p>', NULL, '2020-11-14 08:35:26', '2020-11-14 08:35:26', NULL),
+(49, '<p><span style=\"font-size: 40px;\">FAQs</span></p>', '<h3>Frequently Asked Questions</h3>', NULL, '2020-11-16 06:47:49', '2020-11-16 10:53:59', NULL),
+(50, '<h2>Frequently Asked Questions</h2>', NULL, NULL, '2020-11-16 06:54:04', '2020-11-16 06:54:04', NULL),
+(51, '<h2>General</h2>', NULL, NULL, '2020-11-16 06:54:59', '2020-11-16 06:54:59', NULL),
+(52, '<p>What is Nexcom WiFi?</p>', '<p>This is a premium service that gives you unlimited access to seamless fast and reliable broadband internet.</p>', NULL, '2020-11-16 06:56:01', '2020-11-21 05:32:34', NULL),
+(53, '<p>Does it make any difference to my speeds if I connect more devices</p>', '<p>Yes. Each device is likely to be using background data. Sharing your bandwidth over more devices will usually lead to slower speeds on each individual device. But adding more devices will not change your total speed, which remains at up to max Mbps.</p>', NULL, '2020-11-16 06:57:09', '2020-11-16 06:57:09', NULL),
+(54, '<p>How does WIFI Work?</p>', '<p>Think of it like water, we bring the water (the bandwidth), into a venue using physical pipes, these pipes are connected to the water system (the internet). Once inside a venue we use a sprinkler system (Access Points) to spray the water around. This spray is WiFi. Your phone, laptop or tablet is a cup and when you are connected to Nexcom WiFi you are essentially standing in the spray area catching water in a cup. Simple as that!!!</p>', NULL, '2020-11-16 06:57:40', '2020-11-16 06:57:40', NULL),
+(55, '<p>How do I get assistance in case I have queries, issues or complaints?</p>', '<p>For assistance, please call:<br />+254 20 232 5599 or +254 700 583 417<br />Alternatively, you can send an email to:<br />sales@directcore.com</p>', NULL, '2020-11-16 06:58:53', '2020-11-16 06:58:53', NULL),
+(56, '<p><span style=\"font-size: 28px;\">Terms and Conditions</span></p>', '<p class=\"first__tc\">1. Service Application</p>\r\n<p class=\"first__tc2\">This form is legally binding as proof of service application and Service Level Agreement.</p>\r\n<p class=\"first__tc\">2. Service Acceptance</p>\r\n<p class=\"first__tc2\">If Service Acceptance and Handover Certificate is not signed within 4 days of service provisioning, and the service is optimum in our opinion, this will document will serve as acceptance to commence billing from the service provision date.</p>\r\n<p class=\"first__tc\">3. Term</p>\r\n<p class=\"first__tc2\">This agreement shall remain in force for a period indicated above from the commencement date and shall thereafter renew automatically for periods equivalent to service contract duration unless terminated in accordance with clause No. 7 below.</p>\r\n<p class=\"first__tc\">4. Warranty</p>\r\n<p class=\"first__tc2\">Wherever applicable, Warranty lasts for 6 months after equipments purchase and does not cover for equipment malfunctions due to faulty power, lack of UPS, power spikes or surges. Warranty can thereafter be extended at 20% of initial purchase price.</p>\r\n<p class=\"first__tc\">5. Equipment</p>\r\n<p class=\"first__tc2\">All equipment provided by Directcore Technologies Limited for free, remains property of Directcore Technologies Limited and will be recovered when the service contract is terminated.</p>\r\n<p class=\"first__tc\">6. Payment Mode</p>\r\n<p class=\"first__tc2\">The services will be provided on pre-paid basis.</p>\r\n<p class=\"first__tc\">7. Termination</p>\r\n<p class=\"first__tc2\">Either party shall be entitled to terminate this contract by giving a ninety (90) days notice in writing. The termination of this Agreement for whatever cause shall in no way prejudice the rights of either party accrued to the date of such termination and shall affect the Master Service Agreement to the extent of services provided in this service order form ONLY.</p>\r\n<p class=\"first__tc\">8. Confidentiality</p>\r\n<p class=\"first__tc2\">Each party to this Agreement shall at all times use its best endeavors to keep confidential (and to procure that its offices, employees and agents shall keep confidential) any information it may acquire in relation to clients, business or affairs of the other party to this Agreement and shall not use or disclose such information without the consent of the other party to this Agreement or in accordance with an order of a court of competent jurisdiction. The customer acknowledges that all of the information contained in this Internet Services Order Form is proprietary and confidential to Directcore Technologies Limited.</p>\r\n<p class=\"first__tc\">9. Partnership</p>\r\n<p class=\"first__tc2\">Nothing in this Agreement shall be deemed to constitute a partnership between the parties to this Agreement nor constitute any party the agent of the other party or otherwise entitle any party to have authority to bind the other party to this Agreement for any purpose.</p>\r\n<p class=\"first__tc\">10. Force Majeure</p>\r\n<p class=\"first__tc2\">Neither party shall be responsible for any delay or failure in performance of this Agreement due to Force Majeure such as war, hostilities, revolution, civil commotion, strikes, lockouts, epidemics, accidents, fire, wind, flood, earthquakes or by any law or order, proclamation, regulation or ordinance of any government or any sub-division thereof or because any act of God, nature or public enemy, act or omission of carriers or suppliers or for any other cause beyond the control of the party affected. In case of Force Majeure, the party affected will notify the other party as soon as possible.</p>\r\n<p class=\"first__tc\">11. Legal Jurisdiction</p>\r\n<p class=\"first__tc2\">This Agreement shall be governed and construed in accordance with the laws of the Republic of Kenya, which shall mean present laws or any statutory modification or reenactment thereof for the time being in force.</p>\r\n<p class=\"first__tc\">12. Arbitration</p>\r\n<p class=\"first__tc2\">Any dispute or question which may arise at any time between the parties regarding the construction of this Agreement or the rights or liabilities of the parties shall be referred to the decision of a single arbitrator in Nairobi to be agreed upon between the parties or in default of agreement within fourteen (14) days after service by one of the parties hereto on the other of notice of the existence of such dispute difference or question to be appointed at the request of either party by the Chairman for the time being Kenya Branch of Chartered Institute of Arbitrators and such arbitration shall be conducted in accordance with and subject to the provisions of the Arbitration Act (Chapter 49 of the Laws of Kenya) as may be amended from time to time and the rules of the Chartered Institute of Arbitrators (Kenya Branch) shall apply to such arbitration proceedings.</p>\r\n<p class=\"first__tc\">13. Licenses</p>\r\n<p class=\"first__tc2\">The customer will be responsible for their licenses, compliance, systems and software level security. Directcore Technologies Limited wholly or through its partners will provide security to the infrastructure, necessary compliance and licenses required for the infrastructure.</p>', NULL, '2020-11-16 06:59:34', '2020-11-16 10:05:33', NULL),
+(57, '<h2 style=\"text-align: left; line-height: 18px;\"><br /><span style=\"font-size: 15px;\">FAQs</span></h2>', NULL, NULL, '2020-11-16 09:09:33', '2020-11-16 09:09:33', NULL),
+(58, '<p>General</p>', NULL, NULL, '2020-11-16 10:10:21', '2020-11-16 10:10:21', NULL),
+(59, '<p>Payments</p>', NULL, NULL, '2020-11-16 10:10:31', '2020-11-16 10:10:31', NULL),
+(60, '<p>Product and Services</p>', NULL, NULL, '2020-11-16 10:10:46', '2020-11-16 10:10:46', NULL),
+(61, '<p>Technical Issues</p>', NULL, NULL, '2020-11-16 10:10:59', '2020-11-16 10:10:59', NULL),
+(62, '<p><span style=\"font-size: 28px;\">Subscribe to Internet Access for BUSINESS</span></p>', '<p style=\"line-height: 40px;\"><span style=\"font-size: 16px;\">Submit a connection request below</span></p>', NULL, '2020-11-19 04:43:25', '2020-11-20 06:14:23', NULL),
+(63, '<p><span style=\"font-size: 28px;\">Subscribe to Internet Access for HOME</span></p>', '<p style=\"line-height: 40px;\"><span style=\"font-size: 16px;\">Submit a connection request below</span></p>', NULL, '2020-11-19 04:45:03', '2020-11-20 06:08:30', NULL),
+(65, '<p><span style=\"font-size: 40px;\">Dedicated Internet</span></p>', '<h2 class=\"title__line \">Internet</h2>\r\n<p>Did you know that when you sign up for internet with an internet service provider (ISP), you&rsquo;re sharing internet through a single cable with everyone in your area? While sharing is caring, it&rsquo;s not ideal when you&rsquo;re trying to run a video conference or download a large file. By switching to a dedicated internet connection, your internet goes directly and only to your office. That means no more sharing with neighboring buildings and people that hog that treasured bandwidth.</p>', '<h2>Dedicated Internet</h2>\r\n<p>Dedicated internet access (DIA) is a private connection between your business and the web.<br />With DIA, unlike regular broadband service, your business doesn&rsquo;t have to compete with other subscribers for bandwidth. That means you can enjoy upload speeds that are just as a fast as download speeds no matter the time of day. Think of it as having a lane on the highway that&rsquo;s yours and yours alone. Even at rush hour, you&rsquo;re able to travel at a consistent speed. This rock-solid internet performance will support your business&rsquo;s critical operations.</p>', '2020-11-19 10:50:04', '2020-11-20 05:08:50', '<h2>Advantages of Dedicated Internet</h2>\r\n<p style=\"line-height: 8px;\"><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Guaranteed bandwidth</p>\r\n<p style=\"line-height: 8px;\"><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Power and speed</p>\r\n<p style=\"line-height: 8px;\"><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Dedicated customer service</p>\r\n<p style=\"line-height: 8px;\"><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Increased productivity</p>\r\n<p style=\"line-height: 8px;\"><em class=\"fa fa-check\" style=\"color: #fa9d3b;\">&nbsp;</em>Enhanced security</p>'),
+(66, '<p><span style=\"font-size: 40px;\">Smart Solutions</span></p>', '<h3 class=\"title__line text-center\">What are Smart Solutions?</h3>\r\n<p>As a service provider, we strive to be perceived as the most innovative company in the Facility Management industry. We achieve this goal by continuously identifying, developing and launching innovative solutions that provide tangible values ​​to our customers and ourselves.<br />At Nexcom, we focus on understanding how new technologies like the Internet of Things, AI and Mobility can be used to increase attraction, productivity, efficiency and sustainability in an office environment.<br />Through our comprehensive innovation ecosystem, together with customers, partners and employees, we identify, develop and launch selected services under the collective name Smart Solutions.</p>', NULL, '2020-11-19 10:54:26', '2020-11-23 10:29:23', '<div>\r\n<p>&nbsp;</p>\r\n</div>\r\n<div>\r\n<div>&nbsp;</div>\r\n</div>\r\n<p>&nbsp;</p>'),
+(67, '<p><span style=\"font-size: 40px;\">Hosting</span></p>', '<h2 class=\"title__line\" style=\"font-size: 22px;\">What is Web Hosting?</h2>\r\n<p>Web hosting is a service that allows organizations and individuals to post a website or web page onto the Internet. A web host, or web hosting service provider, is a business that provides the technologies and services needed for the website or webpage to be viewed in the Internet. Websites are hosted, or stored, on special computers called servers. When Internet users want to view your website, all they need to do is type your website address or domain into their browser. Their computer will then connect to your server and your webpages will be delivered to them through the browser. <br />Nexcom hosting require that you own your domain in order to host with us. If you do not have a domain, we will help you purchase one.</p>', NULL, '2020-11-19 10:57:01', '2020-11-25 06:35:50', NULL),
+(68, '<p class=\"cta-text\">Interested? <a class=\"cta-btn align-middle\" href=\"{{ url(\'/contact\') }}\" aria-invalid=\"true\">Please contact our consultants and sales reprentatives</a></p>', NULL, NULL, '2020-11-20 05:10:53', '2020-11-20 05:29:05', NULL),
+(69, '<p><img src=\"../images/logo/nexcom.png\" alt=\"\" width=\"188\" height=\"55\" /></p>', NULL, NULL, '2020-11-20 06:46:22', '2020-11-20 07:07:45', NULL),
+(70, '<p><span class=\"float-left\"> Copyright &copy; Nexcom, 2020. All Rights Reserved.</span><span class=\"float-right\"> A Product of <a href=\"https://www.directcore.com/\">Directcore Technologies Limited</a> </span></p>', NULL, NULL, '2020-12-01 11:34:45', '2020-12-01 11:34:45', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shops`
+--
+
+CREATE TABLE `shops` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` double NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shops`
+--
+
+INSERT INTO `shops` (`id`, `product`, `price`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'earphones', 200, '/images/c.jpg', NULL, NULL),
+(2, 'headphones', 2000, '/images/c.jpg', NULL, NULL),
+(3, 'speaker', 1500, '/images/d.jpg', NULL, NULL),
+(4, 'earphones', 200, '/images/c.jpg', NULL, NULL),
+(5, 'headphones', 2000, '/images/c.jpg', NULL, NULL),
+(6, 'speaker', 1500, '/images/d.jpg', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tecshop_carts`
+--
+
+CREATE TABLE `tecshop_carts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `userId` int(11) NOT NULL,
+  `product` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `qty` int(11) NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tecshop_products`
+--
+
+CREATE TABLE `tecshop_products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `qty` int(11) NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tecshop_products`
+--
+
+INSERT INTO `tecshop_products` (`id`, `product`, `price`, `image`, `qty`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Earphones', 200, '/images/c.jpg', 1, '', NULL, NULL),
+(2, 'Headphones', 2000, '/images/c.jpg', 1, '', NULL, NULL),
+(3, 'Speaker', 1500, '/images/d.jpg', 1, '', NULL, NULL),
+(4, 'Voyager', 4000, '/images/e.jpg', 1, '', NULL, NULL),
+(5, 'Calisto', 2000, '/images/f.jpg', 1, '', NULL, NULL),
+(6, 'Black Wire', 3000, '/images/g.jpg', 1, '', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tecshop_users`
+--
+
+CREATE TABLE `tecshop_users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `first_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `middle_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_no` int(11) NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tecshop_users`
+--
+
+INSERT INTO `tecshop_users` (`id`, `first_name`, `middle_name`, `last_name`, `phone_no`, `email`, `address`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'test_f', 'test_m', 'test_l', 0, 'test@test.com', '', NULL, '$2y$10$NpLg8xxDkID6s6Q8GunohuIVK8i8TUXR9nY615P8ufkfQOzSb04Xi', NULL, '2021-01-10 14:27:32', '2021-01-10 14:27:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'BEN', 'benjaminochieng99@gmail.com', NULL, '$2y$10$GULukPz.PZca6Zn2wnEnb.kwduxm6OMuyOTYO9CTAMNZhULdL46r6', NULL, '2020-11-02 06:06:07', '2020-11-02 06:06:07'),
+(2, 'Francis', 'francis@directcore.com', NULL, '$2y$10$2VhYPiswDwxXYEnYVSr.OeqXLeca9xznbBRqb8NQ/KbUJY9IbM6ki', NULL, '2020-11-09 04:09:12', '2020-11-09 04:09:12'),
+(4, 'BENJAMIN', 'b.ochieng@directcore.com', NULL, '$2y$10$iroNAVIVeoBXK4i.k.z6FOQqAp0gSR03ER..GoxKS2Ou2v.Y21Zw2', NULL, '2020-11-09 09:22:38', '2020-11-09 09:22:38'),
+(5, 'James', 'hello@gmail.com', NULL, '$2y$10$rvQgBq/Cx5f1WPEzMvUL2.VnjHJO4Yy7Nik61FE4lH9gLoP00Rb2u', NULL, '2020-11-17 04:57:24', '2020-11-17 04:57:24'),
+(19, 'Muli', 'cmuli@directcore.com', NULL, '$2y$10$l2NnmFZ4V3RIrKob6XvQWOCTBEI3Mw8XJfWeoBnOgs9UPbntT97Qm', NULL, '2020-11-18 05:57:15', '2020-11-18 05:57:15'),
+(21, 'User', 'user@user.com', NULL, '$2y$10$zCVYNsjgZnVhQfqTPhOcHeINAE43uZfg3/bOKJrTEP2czHXjjLRPG', NULL, '2020-11-20 07:29:34', '2020-11-20 07:29:34'),
+(22, 'User2', 'user2@user.com', NULL, '$2y$10$7goxPlIghIgbkGxQUZBjkuDQ0VvF5FdEn0efzQycEVN3lvl4XHQxW', NULL, '2020-11-21 06:03:39', '2020-11-21 06:03:39');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `data`
+--
+ALTER TABLE `data`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `shops`
+--
+ALTER TABLE `shops`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tecshop_carts`
+--
+ALTER TABLE `tecshop_carts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tecshop_products`
+--
+ALTER TABLE `tecshop_products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tecshop_users`
+--
+ALTER TABLE `tecshop_users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tecshop_users_email_unique` (`email`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `data`
+--
+ALTER TABLE `data`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+
+--
+-- AUTO_INCREMENT for table `shops`
+--
+ALTER TABLE `shops`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tecshop_carts`
+--
+ALTER TABLE `tecshop_carts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tecshop_products`
+--
+ALTER TABLE `tecshop_products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tecshop_users`
+--
+ALTER TABLE `tecshop_users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
