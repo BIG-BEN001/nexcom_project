@@ -229,11 +229,11 @@ function pesatel(){
         dataType: 'json',
         success:
             function( data ){
-                console.log(data.total);
-                console.log(data.order_number);
-                console.log(data.email);
-                console.log(data.phone_number);
-                console.log(data);
+                // console.log(data.total);
+                // console.log(data.order_number);
+                // console.log(data.email);
+                // console.log(data.phone_number);
+                // console.log(data);
                 $(function(){
                     new $.Pesatel({
                         env: 'production',
@@ -324,7 +324,6 @@ function addToWishlist(id){
     success:
         function( response ){
             // console.log(response);
-
         }
     });
 };
@@ -407,9 +406,7 @@ function removeHistory(id){
     dataType: 'json',
     success:
         function( data ){
-            console.log(data);
-
-
+            // console.log(data);
         }
     });
 };
@@ -424,7 +421,7 @@ function tec_search(){
     dataType: 'json',
     success:
         function( data ){
-            console.log("search data"+data);
+            // console.log("search data"+data);
 
         }
     });
